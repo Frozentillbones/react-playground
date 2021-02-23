@@ -1,14 +1,11 @@
 import React, { ReactElement, ReactNode } from 'react';
 
 const getChildWithElementClassName = (blockClassName: string) => (child: ReactNode) => {
-	if (!child) {
-		return null;
-	}
 	const isPrimitive = 
 		typeof child === 'string' ||
 		typeof child === 'number' ||
 		typeof child === 'boolean';
-	if (isPrimitive) {
+	if (!child || isPrimitive) {
 		return child;
 	}
 	const childProps = (child as ReactElement).props;

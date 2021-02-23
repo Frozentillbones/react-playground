@@ -1,8 +1,8 @@
 import getBemTag from './getBemTag';
 import { tagNames } from './tagNames';
-import { BemTag } from './types';
+import { BemTag, TagNames } from './types';
 
-const bem: Record<string, BemTag> = 
+const bem: Record<TagNames, BemTag> = 
 	tagNames.reduce(
 		(prev, curr) => {
 			const BemTag: BemTag = getBemTag(curr);
@@ -12,7 +12,7 @@ const bem: Record<string, BemTag> =
 				[curr]: BemTag
 			};
 		},
-		{} as Record<string, BemTag>
+		{} as Record<TagNames, BemTag>
 	);
 
 export default bem;
