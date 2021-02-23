@@ -66,6 +66,7 @@
     "core-js": "3",
     "mobx": "^6.0.4",
     "mobx-react-lite": "^3.1.6",
+    "nanoid": "^3.1.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }

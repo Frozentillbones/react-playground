@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react';
 
-const getChildWithElementClassName = (blockClassName: string) => (child: ReactNode) => {
+const getChildWithElementClassName = (blockClassName?: string) => (child: ReactNode) => {
 	const isPrimitive = 
 		typeof child === 'string' ||
 		typeof child === 'number' ||
@@ -11,7 +11,7 @@ const getChildWithElementClassName = (blockClassName: string) => (child: ReactNo
 	const childProps = (child as ReactElement).props;
 	const childClassName = childProps.className;
 	const childFirstClassName = childClassName && childClassName.split(' ')[0];
-	const elementClassName = childFirstClassName ? `${blockClassName}__${childFirstClassName}` : null;
+	const elementClassName = childFirstClassName && blockClassName ? `${blockClassName}__${childFirstClassName}` : null;
 	return React.cloneElement(
 		(child as ReactElement),
 		{
