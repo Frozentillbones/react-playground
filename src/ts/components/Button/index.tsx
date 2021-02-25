@@ -7,15 +7,14 @@ interface ButtonProps extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonE
 };
 
 const Button = forwardRef((props: ButtonProps, ref) => {
-	const { children, onClick, ripple, ...restProps } = props;
-
+	const { children, onMouseDown, ripple, ...restProps } = props;
 	const [ripples, addRipple] = useRipples();
 
 	return (
 		<bem.button
-			onClick={(e: React.MouseEvent<HTMLButtonElement>) => { 
+			onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) => { 
 				ripple && addRipple(e);
-				onClick && onClick(e);
+				onMouseDown && onMouseDown(e);
 			}}
 			ref={ref}
 			{...restProps}

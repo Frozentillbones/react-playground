@@ -1,6 +1,7 @@
 @import './helpers/variables';
 @import './helpers/functions';
 @import './helpers/mixins/index';
+@import './helpers/animations/index';
 
 * {
 	padding: 0;
@@ -11,4 +12,8 @@
 button {
 	position: relative;
 	overflow: hidden;
+}
+
+.ripple {
+	animation: ripple $anim-dur ease-in-out;
 }
