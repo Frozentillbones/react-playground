@@ -12,7 +12,7 @@ interface RippleProps extends RipplesOptions {
 	top: string;
 }
 
-const defaultRipplesOptions = {color: '#ffffff', className: 'ripple'};
+const defaultRipplesOptions: RipplesOptions = {color: '#ffffff', className: 'ripple'};
 
 const useRipples = (options?: RipplesOptions): [JSX.Element[], (e: React.MouseEvent<HTMLElement>) => void] => {
 
