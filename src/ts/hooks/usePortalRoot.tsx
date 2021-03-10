@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const createPortalRoot = (id: string) => {
 	const portalRoot = document.createElement('div');
@@ -10,7 +10,9 @@ const defaultPortalRootId = 'portal-root';
 
 const usePortalRoot = (portalRootId?: string) => {
 	const portalTriggerRef = useRef<any>();
-	const portalRootRef = useRef(createPortalRoot(portalRootId || defaultPortalRootId)) as MutableRefObject<HTMLElement>;
+	const portalRootRef = useRef<HTMLDivElement>(
+		createPortalRoot(portalRootId || defaultPortalRootId)
+	);
 
 	useEffect(() => {
 		const node = portalRootRef.current;
