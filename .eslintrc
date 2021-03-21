@@ -17,7 +17,14 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
     "semi": "error",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+		"max-len": [
+			"error",
+			{
+				"tabWidth": 2,
+				"code": 100
+			}
+		]
   },
   "settings": {
     "react": {

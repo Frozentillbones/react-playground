@@ -4,7 +4,10 @@ import getChildWithElementClassName from './getChildWithElementClassName';
 
 const getBemTag = (tagName: string): BemTag => 
 	forwardRef(
-		({children, className, modifiers, ...restProps}: PropsWithChildren<BemTagProps>, ref: React.Ref<any>) => {
+		(
+			{children, className, modifiers, ...restProps}: PropsWithChildren<BemTagProps>,
+			ref: React.Ref<any>
+		) => {
 			const Tag = tagName;
 			const blockClassName = className && className.split(' ')[0];
 			const modifiedBlocks = 

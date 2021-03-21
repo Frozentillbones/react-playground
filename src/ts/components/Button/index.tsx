@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, forwardRef, PropsWithChildren } from 'react';
-import useRipples from '../../hooks/useRipples';
-import bem from '../bem';
+import useRipples from 'hooks/useRipples';
+import bem from 'components/bem';
 
 interface ButtonProps extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
 	ripple?: boolean

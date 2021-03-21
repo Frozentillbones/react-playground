@@ -9,7 +9,6 @@ const createPortalRoot = (id: string) => {
 const defaultPortalRootId = 'portal-root';
 
 const usePortalRoot = (portalRootId?: string) => {
-	const portalTriggerRef = useRef<any>();
 	const portalRootRef = useRef<HTMLDivElement>(
 		createPortalRoot(portalRootId || defaultPortalRootId)
 	);
@@ -22,10 +21,7 @@ const usePortalRoot = (portalRootId?: string) => {
 		};
 	}, []);
 	
-	return {
-		portalRoot: portalRootRef.current,
-		portalTrigger: portalTriggerRef.current,
-	};
+	return portalRootRef.current;
 };
 
 export default usePortalRoot;

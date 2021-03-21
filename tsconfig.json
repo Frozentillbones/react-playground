@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"checkJs": false,
     "allowSyntheticDefaultImports": true,
@@ -13,7 +13,19 @@
     "isolatedModules": false,
     "noEmit": true,
 		"jsx": "react",
-		"noImplicitAny": false
+		"downlevelIteration": true,
+		"noImplicitAny": false,
+		"baseUrl": "./",
+		"paths": {
+			"hooks/*": ["src/ts/hooks/*"],
+			"contexts/*": ["src/ts/contexts/*"],
+			"components/*": ["src/ts/components/*"],
+			"store/*": ["src/ts/store/*"],
+			"utils/*": ["src/ts/utils/*"],
+			"style/*": ["src/style/*"],
+			"images/*": ["src/images/*"],
+			"fonts/*": ["src/fonts/*"],
+		}
   },
-  "include": ["./src"]
+  "include": ["src"]
 }

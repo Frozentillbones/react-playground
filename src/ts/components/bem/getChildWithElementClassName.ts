@@ -11,7 +11,8 @@ const getChildWithElementClassName = (blockClassName?: string) => (child: ReactN
 	const childProps = (child as ReactElement).props;
 	const childClassName = childProps.className;
 	const childFirstClassName = childClassName && childClassName.split(' ')[0];
-	const elementClassName = childFirstClassName && blockClassName ? `${blockClassName}__${childFirstClassName}` : null;
+	const elementClassName = 
+		childFirstClassName && blockClassName ? `${blockClassName}__${childFirstClassName}` : null;
 	return React.cloneElement(
 		(child as ReactElement),
 		{

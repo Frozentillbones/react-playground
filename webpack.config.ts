@@ -66,6 +66,16 @@ const cfg: webpack.Configuration = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+		alias: {
+			hooks: path.resolve(__dirname, 'src/ts/hooks'),
+			components: path.resolve(__dirname, 'src/ts/components'),
+			contexts: path.resolve(__dirname, 'src/ts/contexts'),
+			store: path.resolve(__dirname, 'src/ts/store'),
+			utils: path.resolve(__dirname, 'src/ts/utils'),
+			style: path.resolve(__dirname, 'src/style'),
+			images: path.resolve(__dirname, 'src/images'),
+			fonts: path.resolve(__dirname, 'src/fonts'),
+		}
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
