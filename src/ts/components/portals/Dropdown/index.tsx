@@ -10,6 +10,7 @@ import useOutsideClickListener from 'hooks/useOutsideClickListener';
 import bem from 'components/bem';
 import Portal from '../Portal';
 import useDimensions from 'hooks/useDimensions';
+import findAsParent from 'utils/dom/findAsParent';
 
 export type DropdownPosition = 'top' | 'bottom' | 'left' | 'right';
 
@@ -36,9 +37,14 @@ const Dropdown = (props: DropdownProps) => {
 	const [ref, selfDimensions] = useDimensions();
 
 	useOutsideClickListener((ref as MutableRefObject<HTMLElement>), (e: MouseEvent) => {
-		if (e.target !== trigger.current) {
-			close();
+		if (e.target === trigger.current) {
+			return;
 		}
+		const parent = findAsParent<HTMLButtonElement>((e.target as HTMLElement), trigger.current);
+		if (parent === trigger.current) {
+			return;
+		}
+		close();
 	});
 	
 	const coords = useMemo(() => {
@@ -72,9 +78,6 @@ const Dropdown = (props: DropdownProps) => {
 	}, [triggerDimensions, selfDimensions]);
 
 	const positionStyle = useMemo(() => {
-		if (coords.top.visibility !== undefined) {
-			return coords.top;
-		}
 		switch (position) {
 			case 'top':
 				return coords.top;

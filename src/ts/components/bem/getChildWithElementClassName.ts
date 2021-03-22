@@ -1,11 +1,8 @@
 import React, { ReactElement, ReactNode } from 'react';
+import isPrimitive from 'utils/type/isPrimitive';
 
 const getChildWithElementClassName = (blockClassName?: string) => (child: ReactNode) => {
-	const isPrimitive = 
-		typeof child === 'string' ||
-		typeof child === 'number' ||
-		typeof child === 'boolean';
-	if (!child || isPrimitive) {
+	if (!child || isPrimitive(child)) {
 		return child;
 	}
 	const childProps = (child as ReactElement).props;

@@ -1,7 +1,6 @@
 @import './helpers/variables';
 @import './helpers/functions';
 @import './helpers/mixins/index';
-@import './helpers/animations/index';
 
 * {
 	padding: 0;
@@ -9,12 +8,3 @@
 	box-sizing: border-box;
 }
 
-button {
-	position: relative;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-.ripple {
-	animation: ripple $anim-dur ease-in-out;
-}

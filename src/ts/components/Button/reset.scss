@@ -1,0 +1,13 @@
+button {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	* {
+		position: relative;
+		// i tags are for ripples
+		&:not(i) {
+			z-index: 1;
+		}
+	}
+}
