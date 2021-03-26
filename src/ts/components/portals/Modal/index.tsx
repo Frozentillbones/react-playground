@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren, useRef } from 'react';
+import React, { FC, HTMLAttributes, PropsWithChildren, useRef } from 'react';
 import useBlockInteractions from 'hooks/useBlockInteractions';
 import useKeyboardListener from 'hooks/useKeydownListener';
 import useOutsideClickListener from 'hooks/useOutsideClickListener';
@@ -12,15 +12,14 @@ interface ModalProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>>{
 	blockOuterActions?: boolean 
 }
 
-const Modal = (props: ModalProps) => {
-	const {
-		root,
-		children,
-		onOutsideClick,
-		onEsc,
-		blockOuterActions,
-		...restProps
-	} = props;
+const Modal: FC<ModalProps> = ({
+	root,
+	children,
+	onOutsideClick,
+	onEsc,
+	blockOuterActions,
+	...restProps
+}) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	useOutsideClickListener(ref, (e: MouseEvent) => onOutsideClick && onOutsideClick(e));

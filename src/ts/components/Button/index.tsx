@@ -1,14 +1,15 @@
-import React, { ButtonHTMLAttributes, forwardRef, PropsWithChildren } from 'react';
+import React, { ButtonHTMLAttributes, FC, forwardRef, PropsWithChildren } from 'react';
 import useRipples from 'hooks/useRipples';
 import bem from 'components/bem';
 import wrapPrimitive from 'utils/react/wrapPrimitive';
 import './reset';
 
 interface ButtonProps extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
-	ripple?: boolean
+	ripple?: boolean;
+	modifiers?: string[],
 };
 
-const Button = forwardRef((props: ButtonProps, ref) => {
+const Button: FC<ButtonProps> = forwardRef((props, ref) => {
 	const { children, onMouseDown, ripple, ...restProps } = props;
 	const [ripples, addRipple] = useRipples();
 

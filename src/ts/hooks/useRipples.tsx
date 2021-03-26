@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import isTooGreen from 'utils/color/isTooGreen';
+import isTooYellow from 'utils/color/isTooYellow';
+import rgbToHex from 'utils/color/rgbToHex';
+import shade from 'utils/color/shade';
 import createRipple from 'utils/react/createRipple';
-export interface RipplesOptions {
-	color?: string;
-	className?: string;
-};
 
 type UseRipplesReturn = [JSX.Element[], (e: React.MouseEvent<HTMLElement>) => void]
 
-const defaultRipplesOptions: RipplesOptions = {color: '#ffffff', className: 'ripple'};
-
-const useRipples = (options?: RipplesOptions): UseRipplesReturn => {
+const useRipples = (): UseRipplesReturn => {
 
 	const [ ripples, setRipples ] = useState<JSX.Element[]>([]);
 
@@ -18,16 +16,18 @@ const useRipples = (options?: RipplesOptions): UseRipplesReturn => {
 	};
 
 	const addRipple = (event: React.MouseEvent<HTMLElement>) => {
-		const cfg = options ? options : defaultRipplesOptions;
-		const { className, color } = cfg;
 		const rect = event.currentTarget.getBoundingClientRect();
+		const parentColor = window.getComputedStyle(event.currentTarget).backgroundColor;
 		const width = Math.max(rect.width, rect.height);
 		const left = event.clientX - rect.left - width / 2;
 		const top = event.clientY - rect.top - width / 2;
 		const newRipple = createRipple({
 			delRipple,
-			className,
-			color,
+			color: shade(
+				rgbToHex(parentColor),
+				isTooGreen(parentColor) && !isTooYellow(parentColor)
+					? 200 : isTooYellow(parentColor) ? -200 : 200
+			),
 			width,
 			left,
 			top

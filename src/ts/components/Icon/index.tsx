@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import * as sprite from 'images/svg/icons-sprite.svg';
 import './reset';
 
@@ -8,11 +8,11 @@ interface IconProps {
 	id: string
 }
 
-const Icon = ({
+const Icon: FC<IconProps> = ({
 	src,
 	id,
 	className
-}: IconProps) => {
+}) => {
 
 	return (
 		<svg className={className}>

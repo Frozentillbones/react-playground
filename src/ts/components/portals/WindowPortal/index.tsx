@@ -1,12 +1,11 @@
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type WindowPortalProps = PropsWithChildren<{
 	params: [string, string, string];
 }>
 
-const WindowPortal = (props: WindowPortalProps) => {
-	const { children, params } = props;
+const WindowPortal: FC<WindowPortalProps> = ({ children, params }) => {
 	const [windowPortal, setWindowPortal] = useState<Window | null>(null);
 	const container = useRef(document.createElement('div'));
 	

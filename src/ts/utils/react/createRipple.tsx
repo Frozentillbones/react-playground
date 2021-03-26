@@ -1,10 +1,10 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { RipplesOptions } from 'hooks/useRipples';
 import 'style/helpers/animations/ripple';
 
-interface RippleProps extends RipplesOptions {
+interface RippleProps {
 	delRipple: (key: string) => void;
+	color: string;
 	width: number;
 	left: number;
 	top: number;
@@ -12,7 +12,6 @@ interface RippleProps extends RipplesOptions {
 
 const createRipple = ({
 	delRipple,
-	className,
 	color,
 	width,
 	left,
@@ -20,7 +19,6 @@ const createRipple = ({
 }: RippleProps) => {
 	const key = nanoid();
 	return <i
-		className={className}
 		key={key}
 		onAnimationEnd={() => {
 			delRipple(key);
@@ -34,7 +32,7 @@ const createRipple = ({
 			width,
 			left,
 			top,
-			animation: 'ripple 320ms ease-in-out'
+			animation: 'ripple 400ms ease-out'
 		}}
 	/>;
 };

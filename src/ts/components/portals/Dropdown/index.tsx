@@ -1,5 +1,6 @@
 import React, {
 	CSSProperties,
+	FC,
 	HTMLAttributes,
 	MutableRefObject,
 	PropsWithChildren,
@@ -22,17 +23,16 @@ interface DropdownProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>
 	close: () => void;
 }
 
-const Dropdown = (props: DropdownProps) => {
-	const {
-		root,
-		close,
-		position = 'bottom',
-		trigger,
-		triggerDimensions,
-		children,
-		style,
-		...restProps
-	} = props;
+const Dropdown: FC<DropdownProps> = ({
+	root,
+	close,
+	position = 'bottom',
+	trigger,
+	triggerDimensions,
+	children,
+	style,
+	...restProps
+}) => {
 
 	const [ref, selfDimensions] = useDimensions();
 
