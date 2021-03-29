@@ -6,6 +6,7 @@ import React, {
 	useState
 } from 'react';
 import bem from 'components/bem';
+import { BemProps } from 'components/bem/types';
 import { TabsContext } from 'contexts/TabsContext';
 import Tab, {TabProps} from './Tab';
 import Panel, {PanelProps} from './Panel';
@@ -19,7 +20,7 @@ type TabsProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
 const { Provider } = TabsContext;
 	
-const Tabs: FC<TabsProps> & TabsComposition = ({ children, ...props }) => {
+const Tabs: FC<TabsProps & BemProps> & TabsComposition = ({ children, ...props }) => {
 	const [ activeTabIndex, setActiveTabIndex ] = useState(0);
 
 	const value = useMemo(

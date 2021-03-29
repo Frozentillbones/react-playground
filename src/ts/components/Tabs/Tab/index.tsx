@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes, PropsWithChildren, useMemo } from 'react';
+import { BemProps } from 'components/bem/types';
 import useTabs from 'contexts/TabsContext';
 import Button from 'components/Button';
 
@@ -7,7 +8,7 @@ export interface TabProps extends PropsWithChildren<HTMLAttributes<HTMLButtonEle
 	ripple?: boolean;
 }
 
-const Tab: FC<TabProps> = ({ children, index, ...props }) => {
+const Tab: FC<TabProps & BemProps> = ({ children, index, ...props }) => {
 	const {activeTabIndex, setActiveTabIndex} = useTabs();
 
 	const modifiers = useMemo(() => {
