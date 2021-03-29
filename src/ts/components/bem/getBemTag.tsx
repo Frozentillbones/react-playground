@@ -1,32 +1,32 @@
 import React, { forwardRef, PropsWithChildren } from 'react';
 import { BemTag, BemTagProps } from './types';
-import getChildWithElementClassName from './getChildWithElementClassName';
 
 const getBemTag = (tagName: string): BemTag => 
 	forwardRef(
-		(
-			{children, className, modifiers, ...restProps}: PropsWithChildren<BemTagProps>,
+		({
+			children,
+			className,
+			modifiers,
+			elementOf,
+			...restProps
+		}: PropsWithChildren<BemTagProps>,
 			ref: React.Ref<any>
 		) => {
 			const Tag = tagName;
-			const blockClassName = className && className.split(' ')[0];
-			const modifiedBlocks = 
-				blockClassName && modifiers
-					? modifiers.map(modifier => `${blockClassName}--${modifier}`)
-					: [];
-			const modifiedClassName = 
-				modifiedBlocks.length
-					? `${className} ${modifiedBlocks.join(' ')}`
-					: className;
-			const props = { ...restProps, className: modifiedClassName, ref };
+			const classNames = className ? className.split(' ') : [];
+			const [blockClassName, ...otherClassNames] = classNames;
+			const elementClassName = blockClassName && elementOf
+				? `${blockClassName}__${elementOf}` : '';
+			const classNameToModify = elementClassName || blockClassName;
+			const modified = classNameToModify && modifiers 
+				? modifiers.map(modifier => `${classNameToModify}--${modifier}`).join(' ')
+				: '';
+			const finalClassName =
+				`${blockClassName} ${elementClassName} ${modified} ${otherClassNames.join(' ')}`;
+			const props = { ...restProps, className: finalClassName.trim(), ref };
 			return (
 				<Tag {...props}>
-					{
-						React.Children.map(
-							children,
-							getChildWithElementClassName(blockClassName)
-						)
-					}
+					{children}
 				</Tag>);
 		}
 	);

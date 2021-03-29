@@ -1,6 +1,7 @@
 import { ForwardRefExoticComponent, PropsWithChildren, AllHTMLAttributes } from 'react';
 
 export interface BemTagProps extends AllHTMLAttributes<HTMLElement> {
+	elementOf?: string;
 	modifiers?: string[];
 	ref?: React.Ref<any>
 }
