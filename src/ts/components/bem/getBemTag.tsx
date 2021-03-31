@@ -21,9 +21,11 @@ const getBemTag = (tagName: string): BemTag =>
 			const modified = classNameToModify && modifiers 
 				? modifiers.map(modifier => `${classNameToModify}--${modifier}`).join(' ')
 				: '';
-			const finalClassName =
-				`${blockClassName} ${elementClassName} ${modified} ${otherClassNames.join(' ')}`;
-			const props = { ...restProps, className: finalClassName.trim(), ref };
+			const finalClassName = blockClassName 
+				? `${blockClassName} ${elementClassName} ${modified} ${otherClassNames.join(' ')}`.trim()
+				: null;
+			
+			const props = { ...restProps, className: finalClassName, ref };
 			return (
 				<Tag {...props}>
 					{children}
