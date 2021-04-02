@@ -1,6 +1,7 @@
 import { ForwardRefExoticComponent, PropsWithChildren, AllHTMLAttributes } from 'react';
 
 export interface BemProps {
+	className?: string;
 	elementOf?: string;
 	modifiers?: string[];
 }
