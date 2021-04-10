@@ -28,7 +28,6 @@ const Tab: FC<TabProps & BemProps> = ({ children, index, ...props }) => {
 
 Tab.defaultProps = {
 	className: 'tab',
-	ripple: true
 };
 
 export default Tab;

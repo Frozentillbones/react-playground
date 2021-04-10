@@ -16,7 +16,7 @@ const getBemTag = (tagName: string): BemTag =>
 			const classNames = className ? className.split(' ') : [];
 			const [blockClassName, ...otherClassNames] = classNames;
 			const elementClassName = blockClassName && elementOf
-				? `${blockClassName}__${elementOf}` : '';
+				? `${elementOf}__${blockClassName}` : '';
 			const classNameToModify = elementClassName || blockClassName;
 			const modified = classNameToModify && modifiers 
 				? modifiers.map(modifier => `${classNameToModify}--${modifier}`).join(' ')
